@@ -1,9 +1,9 @@
-import { Context, Input, Markup } from 'telegraf';
+import { Context, Input, Markup, Telegraf } from 'telegraf';
 import createDebug from 'debug';
 
 const debug = createDebug('bot:greeting_text');
 
-const description = 'Buy and sell with others on the Telegram Open Network.\n \n'
+export const description = 'Buy and sell with others on the Telegram Open Network.\n \n'
 
 export const replyToMessage = (ctx: Context, messageId: number, string: string) => {
   ctx.reply(string, {
@@ -11,7 +11,7 @@ export const replyToMessage = (ctx: Context, messageId: number, string: string) 
   });
 }
 
-const greeting = () => async (ctx: Context) => {
+const greeting = (bot: Telegraf) => async (ctx: Context) => {
   debug('Triggered "greeting" text command');
 
   const messageId = ctx.message?.message_id;
@@ -19,11 +19,12 @@ const greeting = () => async (ctx: Context) => {
 
   if (messageId) {
     await ctx.replyWithPhoto(Input.fromURL('https://sell.rocks/thumbnail.png'))
+
     await ctx.reply(`Hey, *${userName}!*\n\nWelcome to _SELL!_\n\n${description}`, {
       parse_mode: 'Markdown',
       reply_markup: {
         inline_keyboard: [
-          [{ web_app: { url: 'https://app.sell.rocks' }, text: 'Open App →' }],
+          [{ web_app: { url: 'https://app.sell.rocks/telegram' }, text: 'Open App →' }],
         ]
       }
     });
