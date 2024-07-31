@@ -1,10 +1,10 @@
 {
   "name": "sell-bot",
   "version": "1.1.0",
-  "description": "Telegram Bot Vercel Boilerplate",
+  "description": "Telegram bot for sell.rocks",
   "main": "src/index.ts",
-  "author": "Mark Pavlov (https://github.com/sollidy)",
-  "homepage": "https://github.com/sollidy/sell-bot",
+  "author": "SELL",
+  "homepage": "https://github.com/reduce/sell-bot",
   "dependencies": {
     "@vercel/node": "^3.2.7",
     "dotenv-cli": "^7.4.2",
